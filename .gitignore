@@ -1,0 +1,7 @@
+*.pyc
+*~
+__pycache__
+musicenv
+db.sqlite3
+/media
+.DS_Store

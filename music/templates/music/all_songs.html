@@ -1,0 +1,54 @@
+{% extends 'music/base.html' %}
+
+{% block title %} All Songs {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 col-xs-12 col-sm-offset-4 col-md-offset-4 text-center header">
+			<span>Songs</span>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-xs-12 col-sm-offset-3 col-md-offset-3">
+		{% if messages %}	
+			{% include 'music/messages.html' %}
+		{% endif %}
+		{% if songs.count %}
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Song</th>
+						<th>Album</th>
+						<th><span class="glyphicon {% if song.is_favourite %}glyphicon-heart{% else %}glyphicon-heart-empty{% endif %}"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for song in songs %}
+					<tr>
+						<td>{{ song.song_title }}</td>
+						<td>
+							<a href="{% url 'music:detail' song.album.id %}">
+								{{ song.album }}
+							</a>
+						</td>
+						<td>
+							{% if song.is_favourite %}
+								<span class="glyphicon glyphicon-heart"></span>
+							{% else %}
+								<span class="glyphicon glyphicon-heart-empty"></span>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

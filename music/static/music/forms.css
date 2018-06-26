@@ -1,0 +1,29 @@
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="textarea"] {
+	border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="textarea"]:focus {
+	border-radius: 5px;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="number"]:hover,
+input[type="textarea"]:hover {
+	border-radius: 5px;
+	box-shadow: 0 0 5px #434343;
+}
+
+@media(max-width:750px) {
+  .form-group {
+    width: 80%;
+    display: inline-block;
+    margin-left: 15px;
+  }
+}

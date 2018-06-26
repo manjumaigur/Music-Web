@@ -1,0 +1,181 @@
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #fffcd5;
+}
+
+.navbar-brand {
+	font-family: 'Nunito', sans-serif;
+	font-weight: 800;
+	font-size: 25px;
+	letter-spacing: 7px;
+	color: #000000 !important;
+}
+
+.navbar-nav li:hover {
+	background-color: #e2dfbb;
+}
+
+.navbar-nav li a{
+	font-family: 'Nunito', sans-serif;
+	font-weight: 800;
+	letter-spacing: 4px;
+	color: #000000 !important;
+}
+
+.navbar-nav li a:hover {
+    color: #1abc9c !important;
+}
+
+.button {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding: 4px; 
+	font-family: 'Nunito', sans-serif;
+	font-weight: 800;
+	letter-spacing: 0;
+	font-size: 12px;
+	color: #ffffff;
+	background-color: #434343;
+	border: 1px solid #434343;
+	border-radius: 8px;
+}
+
+.button-list ul {
+	list-style-type: none;
+	overflow: hidden;
+	margin: 5px 5px 10px 5px;
+	padding: 5px;
+}
+
+.button-list li {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.button-list li a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 12px;
+	padding-left: 12px;
+}
+
+.header {
+	font-family: 'Nunito', sans-serif;
+	font-weight: 800;
+	font-size: 25px;
+	letter-spacing: 7px;
+	color: #434343;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-top: 0;
+}
+
+.tiles {
+	background-color: #fffcd5;
+	margin: 15px;
+	transition: box-shadow 0.3s;
+}
+
+.tiles:hover .image {
+	opacity: 0.3;
+}
+
+.tiles:hover {
+	background-color: #434343;
+	box-shadow: 0 0 20px rgba(33,33,33,0.7);
+}
+
+.centered {
+	opacity: 0;
+	transition: 0.3s ease;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.tiles:hover .centered {
+	opacity: 1;
+	color: #ffffff;
+}
+
+.tiles1 {
+	color: #ffffff;
+	background-color: #fffcd5;
+	margin: 35px 35px 35px 25px;
+	transition: box-shadow 0.3s;
+}
+
+.tiles1:hover .image {
+	opacity: 0.3;
+}
+
+.tiles1:hover {
+	color: #ffffff;
+	background-color: #434343;
+	box-shadow: 0 0 20px rgba(33,33,33,0.7);
+}
+
+.tiles1:hover .centered {
+	opacity: 1;
+}
+
+table {
+	font-family: 'Nunito', sans-serif;
+	margin-top: 25px;
+}
+
+.dashboard th {
+	color: #434343;
+}
+
+.dashboard td {
+	color: #7b7a7a;
+}
+
+footer {
+	font-family: 'Nunito', sans-serif;
+	color: #434343;
+	background-color: #eeeeee;
+	bottom: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+}
+}
+
+footer ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 10px;
+	overflow: hidden;
+}
+
+footer li {
+	display: inline-block;
+	text-decoration: none;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+footer h4 {
+	padding-top: 20px;
+}
+
+footer form {
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+footer .copyright {
+	font-family: 'Nunito', sans-serif;
+	padding-bottom: 30px;
+	padding-top: 50px;
+}
+

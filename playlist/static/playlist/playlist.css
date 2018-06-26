@@ -1,0 +1,9 @@
+form ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 5px;
+}
+
+form li {
+	text-decoration: none;
+}

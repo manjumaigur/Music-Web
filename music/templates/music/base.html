@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400, 800" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="{% static 'music/main.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'music/audio_player.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'music/forms.css' %}" />
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'music:index' %}">Music Web</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'music:index' %}">Albums</a></li>
+                    <li><a href="{% url 'music:songs' %}">Songs</a></li>
+                    <li><a href="{% url 'playlist:index' %}">Playlists</a></li>
+                    <li class="search">
+                        <form class="navbar-form navbar-left" role="search" method="get" action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="q" value="{{ request.GET.q }}" />
+                            </div>
+                             <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                        </form>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'accounts:dashboard' %}">Profile</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                    <li><a href="{% url 'accounts:register' %}">Signup</a></li>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+
+
+    <footer class="container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-xs-12">
+                    <h4><strong>SHARE YOUR EXPERIENCE</strong></h4>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Message" />
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-4 col-md-4 col-xs-12 text-center copyright">
+                    <b>Copyright owned by Music Web</b>
+                    <h6>Template by Design6 Ltd.</h6>
+                </div>
+                <div class="col-sm-4 col-md-4 col-xs-12 text-center">
+                    <h4><strong>FOLLOW US ON</strong></h4>
+                    <ul>
+                        <li>
+                            <a href="#"><span class="fa fa-facebook fa-2x"></span></a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="fa fa-twitter fa-2x"></span></a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="fa fa-instagram fa-2x"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>  
+        </div>
+    </footer>
+
+{% if user.is_authenticated %}
+    <div class="ap" id="ap">
+      <div class="ap-inner">
+        <div>
+            <img src="{{ album.album_logo.url }}" class="img-responsive albumLogo"/>
+        </div>
+        <div class="ap-panel">
+          <div class="ap-item ap--playback">
+            <audio id="myAudio" src="">  
+            </audio>
+            <button class="ap-controls ap-prev-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" height="24" viewBox="0 0 24 24" width="24">
+                  <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                  <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </button>
+            <button class="ap-controls ap-toggle-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="#fff"  height="30" viewBox="0 0 24 24" width="30" class="ap--play">
+                <path d="M8 5v14l11-7z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" height="30" viewBox="0 0 24 24" width="30" class="ap--pause">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                  <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </button>
+            <button class="ap-controls ap-next-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" height="24" viewBox="0 0 24 24" width="24">
+                  <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                  <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </button>
+          </div>
+          <div class="ap-item ap--track">
+            <div class="ap-info">
+              <div class="ap-title" id="song">Song Name</div>
+              <div class="ap-time">
+                <span class="ap-time--current" id="currentTime">--</span>
+                <span> / </span>
+                <span class="ap-time--duration" id="Duration">--</span>
+              </div>
+
+              <div class="ap-progress-container">
+                <div class="ap-progress">
+                  <div class="ap-bar"></div>
+                  <div class="ap-preload-bar"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="ap-item ap--settings">
+            <div class="ap-controls ap-volume-container">
+              <button class="ap-volume-btn">
+                <svg fill="#ffffff" height="48" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="ap--volume-on">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" height="48" viewBox="0 0 24 24" width="24" class="ap--volume-off">
+                    <path d="M7 9v6h4l5 5V4l-5 5H7z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+              </button>
+              <div class="ap-volume">
+                <div class="ap-volume-progress"><div class="ap-volume-bar"></div></div>
+              </div>
+            </div>
+            <button class="ap-controls ap-repeat-btn">
+              <svg fill="#ffffff"  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+              </svg>
+            </button>
+            <button class="ap-controls ap-playlist-btn">
+              <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M11.8 1c-1.682 0-3.129 1.368-3.799 2.797-0.671-1.429-2.118-2.797-3.8-2.797-2.318 0-4.2 1.882-4.2 4.2 0 4.716 4.758 5.953 8 10.616 3.065-4.634 8-6.050 8-10.616 0-2.319-1.882-4.2-4.2-4.2z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endif %}
+<script type="text/javascript" src="{% static 'music/audio.js' %}"></script>
+</body>
+</html> 

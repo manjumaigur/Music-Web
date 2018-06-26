@@ -1,0 +1,48 @@
+{% extends 'playlist/base.html' %}
+
+{% block title %}Create Playlists{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 col-xs-8 col-sm-offset-4 col-md-offset-4 text-center header">
+			<span>Create Playlists</span>
+		</div>
+	</div>
+</div>
+
+{% if user.is_authenticated %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6 col-md-6 col-xs-12 col-sm-offset-3 col-md-offset-3 text-center">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						{% if messages %}
+							{% include 'playlist/messages.html' %}
+						{% endif %}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th colspan="6" class="text-center">Select one of these to create playlist</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a href="{% url 'playlist:create_album' %}">Create by merging albums</a></td>
+									<td><a href="{% url 'playlist:create_singer' %}">Create based on singer</a></td>
+									<td><a href="{% url 'playlist:create_artist' %}">Create based on Artist</a></td>
+									<td><a href="{% url 'playlist:create_genre' %}">Create based on genre</a></td>
+									<td><a href="{% url 'playlist:create_favourite' %}">Create favourite songs playlist</a></td>
+									<td><a href="{% url 'playlist:create_random' %}">Create by selecting random songs</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+{% endblock %}
