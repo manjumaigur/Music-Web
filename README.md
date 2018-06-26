@@ -27,6 +27,6 @@ A cloud based customizable music player website developed in django and javascri
   
 ![Screenshot](screenshots/musicweb.png)
 ![Screenshot](screenshots/player.png)
-![Screenshot](screenshots/localhost_8000_music_(iPhone 6_7_8) (1).png)
-![Screenshot](screenshots/localhost_8000_music_4_(iPhone 6_7_8).png)
+![Screenshot](screenshots/musicweb_mobile.png)
+![Screenshot](screenshots/palyer_mobile.png)
 
