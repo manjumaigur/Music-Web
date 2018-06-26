@@ -132,8 +132,8 @@ LOGOUT_URL = 'accounts:logout'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = ''    #gmail id
-EMAIL_HOST_PASSWORD = ''    #gmail password
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
